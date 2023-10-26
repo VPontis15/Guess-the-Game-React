@@ -1,6 +1,6 @@
 import StartScreen from "./components/StartScreen/StartScreen";
 import Categories from "./components/Categories/Categories";
-import Button from "./components/Resuable Components/Button";
+import GamesCategory from "./components/GamesCategory/GamesCategory";
 import { useReducer } from "react";
 
 const initialState = {
@@ -31,7 +31,7 @@ function App() {
       {!hasStarted && <StartScreen dispatch={dispatch} />}
       {status === "chooseCategory" && <Categories dispatch={dispatch} />}
       {status === "startGame" && category === "movies" && <p>Movies</p>}
-      {status === "startGame" && category === "games" && <p>Games</p>}
+      {status === "startGame" && category === "games" && <GamesCategory />}
     </div>
   );
 }
