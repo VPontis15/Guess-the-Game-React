@@ -2,10 +2,3 @@
   width: 900px;
   object-fit: cover;
 }
-
-.game {
-  display: flex;
-  gap: 3rem;
-  max-width: 900px;
-  justify-content: center;
-}
