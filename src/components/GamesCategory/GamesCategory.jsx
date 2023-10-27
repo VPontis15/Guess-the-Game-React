@@ -35,7 +35,7 @@ function GamesCategory({ dispatch }) {
 
           dispatch({
             type: "fetchGame",
-            payload: gamesArray[getRandomNumber(19)],
+            payload: gamesArray[getRandomNumber(data.results.length - 1)],
           });
 
           dispatch({ type: "Loaded", payload: false });
