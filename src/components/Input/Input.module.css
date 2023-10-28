@@ -16,3 +16,6 @@
   border-radius: 1.8em;
   background-size: 200% 100%;
 }
+.input::placeholder {
+  color: #36eee0;
+}

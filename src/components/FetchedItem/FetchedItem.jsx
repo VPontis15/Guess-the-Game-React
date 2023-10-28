@@ -5,6 +5,7 @@ import Spinner from "../Spinner/Spinner";
 import { getRandomNumber } from "../../useful Functions/GetRandomNumber";
 
 function FetchedItem({ fetchedItem, isLoading }) {
+  !isLoading && <Spinner />;
   return (
     <div className={styles.game}>
       {fetchedItem.name

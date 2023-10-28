@@ -22,8 +22,7 @@ function reducer(state, action) {
       return { ...state, category: action.payload, status: "startGame" };
     case "fetchGame":
       return { ...state, fetchedItem: action.payload, status: "ready" };
-    case "isLoading":
-      return { ...state, isLoading: action.payload };
+
     case "Loaded":
       return { ...state, isLoading: action.payload, status: "Loaded" };
     default:
@@ -42,14 +41,14 @@ function App() {
       {!hasStarted && <StartScreen dispatch={dispatch} />}
       {status === "chooseCategory" && <Categories dispatch={dispatch} />}
       {status === "startGame" && category === "movies" && <p>Movies</p>}
-      {status === "startGame" && category === "games" && (
-        <GamesCategory dispatch={dispatch} />
-      )}
-
-      {status === "Loaded" ? (
-        <Game fetchedItem={fetchedItem} isLoading={isLoading} />
-      ) : (
-        <Spinner />
+      {category === "games" && (
+        <GamesCategory dispatch={dispatch}>
+          {status === "Loaded" ? (
+            <Game fetchedItem={fetchedItem} isLoading={isLoading} />
+          ) : (
+            <Spinner />
+          )}
+        </GamesCategory>
       )}
     </div>
   );

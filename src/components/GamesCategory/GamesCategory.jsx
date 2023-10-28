@@ -4,13 +4,12 @@ import styles from "./GamesCategory.module.css";
 import WordBox from "../Boxes.jsx/WordBox";
 import LetterBox from "../Boxes.jsx/LetterBox";
 
-function GamesCategory({ dispatch }) {
+function GamesCategory({ dispatch, children }) {
   useEffect(
     function () {
       const KEY = "829b60ddf5b8476987877051d2942836";
       const controller = new AbortController();
       async function fetchGames() {
-        dispatch({ type: "isLoading", payload: true });
         try {
           const res = await fetch(
             `https://api.rawg.io/api/games?key=${KEY}&page=${getRandomNumber(
@@ -49,7 +48,7 @@ function GamesCategory({ dispatch }) {
     [dispatch]
   );
 
-  return null;
+  return children;
 }
 
 export default GamesCategory;
