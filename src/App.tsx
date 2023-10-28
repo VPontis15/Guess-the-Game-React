@@ -1,7 +1,8 @@
 import StartScreen from "./components/StartScreen/StartScreen";
 import Categories from "./components/Categories/Categories";
 import GamesCategory from "./components/GamesCategory/GamesCategory";
-import FetchedItem from "./components/FetchedItem/FetchedItem";
+import Game from "./components/Game/Game";
+import Video from "./components/Resuable Components/Video";
 import { useReducer } from "react";
 
 const initialState = {
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="app">
+      <Video />
       {!hasStarted && <StartScreen dispatch={dispatch} />}
       {status === "chooseCategory" && <Categories dispatch={dispatch} />}
       {status === "startGame" && category === "movies" && <p>Movies</p>}
@@ -44,7 +46,9 @@ function App() {
       {isLoading ? (
         <p>Loading....</p>
       ) : (
-        <FetchedItem fetchedItem={fetchedItem} />
+        <>
+          <Game fetchedItem={fetchedItem} />
+        </>
       )}
     </div>
   );
