@@ -38,7 +38,7 @@ function GamesCategory({ dispatch }) {
             payload: gamesArray[getRandomNumber(data.results.length - 1)],
           });
 
-          dispatch({ type: "Loaded", payload: false });
+          dispatch({ type: "Loaded", payload: false, status: "Loaded" });
         } catch (err) {
           console.log(err);
         }

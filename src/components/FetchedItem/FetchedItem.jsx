@@ -1,9 +1,10 @@
 import styles from "./FetchedItem.module.css";
 import WordBox from "../Boxes.jsx/WordBox";
 import LetterBox from "../Boxes.jsx/LetterBox";
+import Spinner from "../Spinner/Spinner";
 import { getRandomNumber } from "../../useful Functions/GetRandomNumber";
 
-function FetchedItem({ fetchedItem }) {
+function FetchedItem({ fetchedItem, isLoading }) {
   return (
     <div className={styles.game}>
       {fetchedItem.name

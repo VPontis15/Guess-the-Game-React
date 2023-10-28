@@ -11,10 +11,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #36eee0;
 }
 
 .row {
   display: flex;
   gap: 1.5rem;
+}
+
+.overlay {
+  position: absolute;
+  z-index: -99;
+  width: 100vw;
+  min-height: 100vh;
+  inset: 0;
 }

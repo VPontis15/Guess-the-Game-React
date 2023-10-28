@@ -4,7 +4,7 @@ import Button from "../Resuable Components/Button";
 
 function Categories({ dispatch }) {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <h1 className={`${styles["categories-title"]}`}>
         Choose the game's category:
       </h1>
