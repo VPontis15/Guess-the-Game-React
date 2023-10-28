@@ -3,6 +3,7 @@ import Categories from "./components/Categories/Categories";
 import GamesCategory from "./components/GamesCategory/GamesCategory";
 import Game from "./components/Game/Game";
 import Video from "./components/Resuable Components/Video";
+import Spinner from "./components/Spinner/Spinner";
 import { useReducer } from "react";
 
 const initialState = {
@@ -24,7 +25,7 @@ function reducer(state, action) {
     case "isLoading":
       return { ...state, isLoading: action.payload };
     case "Loaded":
-      return { ...state, isLoading: action.payload };
+      return { ...state, isLoading: action.payload, status: "Loaded" };
     default:
       throw new Error("wrong input");
   }
@@ -33,6 +34,7 @@ function reducer(state, action) {
 function App() {
   const [{ fetchedItem, isLoading, hasStarted, category, status }, dispatch] =
     useReducer(reducer, initialState);
+  console.log(status);
 
   return (
     <div className="app">
@@ -43,12 +45,11 @@ function App() {
       {status === "startGame" && category === "games" && (
         <GamesCategory dispatch={dispatch} />
       )}
-      {isLoading ? (
-        <p>Loading....</p>
+
+      {status === "Loaded" ? (
+        <Game fetchedItem={fetchedItem} isLoading={isLoading} />
       ) : (
-        <>
-          <Game fetchedItem={fetchedItem} />
-        </>
+        <Spinner />
       )}
     </div>
   );
