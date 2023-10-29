@@ -40,9 +40,11 @@ function reducer(state, action) {
       return {
         ...state,
         guess: action.payload,
-        correctGuesses: state.formattedName.includes(action.payload)
-          ? [...state.correctGuesses, action.payload]
-          : [...state.correctGuesses],
+        correctGuesses:
+          state.formattedName.includes(action.payload) &&
+          !state.correctGuesses.includes(action.payload)
+            ? [...state.correctGuesses, action.payload]
+            : [...state.correctGuesses],
       };
 
     default:
@@ -65,7 +67,6 @@ function App() {
     dispatch,
   ] = useReducer(reducer, initialState);
   console.log(correctGuesses);
-
   return (
     <div className="app">
       <Video />
@@ -77,6 +78,7 @@ function App() {
           {status === "Loaded" ? (
             <Game
               fetchedItem={fetchedItem}
+              formattedName={formattedName}
               guess={guess}
               dispatch={dispatch}
               isLoading={isLoading}

@@ -5,3 +5,17 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.revealed {
+  color: #36eee0;
+}
+
+.victory {
+  font-size: 6rem;
+  width: 1;
+}
+
+.cover {
+  object-fit: cover;
+  width: 300px;
+}

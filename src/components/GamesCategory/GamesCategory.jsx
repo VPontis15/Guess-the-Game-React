@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRandomNumber } from "../../useful Functions/GetRandomNumber";
-import styles from "./GamesCategory.module.css";
-import WordBox from "../Boxes.jsx/WordBox";
-import LetterBox from "../Boxes.jsx/LetterBox";
+import { getRandomNumber } from "../../utilityFunctions/utilityFunctions";
 
 function GamesCategory({ dispatch, children }) {
   useEffect(
