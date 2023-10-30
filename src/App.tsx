@@ -33,7 +33,7 @@ function reducer(state, action) {
         ...state,
         fetchedItem: action.payload,
         status: "ready",
-        formattedName: action.payload.name
+        formattedName: action.payload?.name
           .toLowerCase()
           .replace(/[^a-zA-Z0-9]/g, ""),
       };
@@ -49,6 +49,11 @@ function reducer(state, action) {
           !state.correctGuesses.includes(action.payload)
             ? [...state.correctGuesses, action.payload]
             : [...state.correctGuesses],
+        wrongGuesses:
+          !state.formattedName.includes(action.payload) &&
+          !state.wrongGuesses.includes(action.payload)
+            ? [...state.wrongGuesses, action.payload]
+            : [...state.wrongGuesses],
       };
     case "Won":
       return { ...state, hasWon: true, status: "Won" };
@@ -58,6 +63,8 @@ function reducer(state, action) {
         seconds: state.seconds < 60 ? state.seconds + 1 : 0,
         minutes: state.seconds === 60 ? state.minutes + 1 : state.minutes,
       };
+    case "Restart":
+      return initialState;
     default:
       throw new Error("wrong input");
   }
@@ -101,13 +108,21 @@ function App() {
               correctGuesses={correctGuesses}
               seconds={seconds}
               minutes={minutes}
+              wrongGuesses={wrongGuesses}
             />
           ) : (
             !hasWon && <Spinner />
           )}
         </GamesCategory>
       )}
-      {status === "Won" && <Won fetchedItem={fetchedItem} />}
+      {status === "Won" && (
+        <Won
+          minutes={minutes}
+          seconds={seconds}
+          dispatch={dispatch}
+          fetchedItem={fetchedItem}
+        />
+      )}
     </div>
   );
 }

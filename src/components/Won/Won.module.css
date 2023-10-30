@@ -1,16 +1,53 @@
 .cover {
   width: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
-  margin-bottom: 1.5rem;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 .row {
-  text-align: center;
-  display: grid;
+  display: flex;
   gap: 1rem;
+  justify-content: space-between;
+  width: 60%;
+  align-items: center;
+}
+
+.genres {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.25rem;
 }
 
 .gameModal {
-  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.75rem;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 6px;
+  margin-block: 1.25rem;
+}
+
+span {
+  color: #fff;
+}
+
+.message {
+  font-size: 1.25rem;
+  margin-top: 3rem;
+  text-align: center;
+  margin-bottom: 2.75rem;
 }

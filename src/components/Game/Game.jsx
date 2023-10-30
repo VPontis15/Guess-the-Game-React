@@ -12,6 +12,7 @@ function Game({
   correctGuesses,
   seconds,
   minutes,
+  wrongGuesses,
 }) {
   return (
     <section className={styles.game}>
@@ -23,8 +24,14 @@ function Game({
         formattedName={formattedName}
         seconds={seconds}
         minutes={minutes}
+        wrongGuesses={wrongGuesses}
       />
-      <Input dispatch={dispatch} fetchedItem={fetchedItem} guess={guess} />
+      <Input
+        wrongGuesses={wrongGuesses}
+        dispatch={dispatch}
+        fetchedItem={fetchedItem}
+        guess={guess}
+      />
     </section>
   );
 }

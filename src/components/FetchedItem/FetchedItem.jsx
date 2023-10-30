@@ -14,7 +14,7 @@ function FetchedItem({
   formattedName,
   correctGuesses,
 }) {
-  const formattedWords = fetchedItem.name
+  const formattedWords = fetchedItem?.name
     .toLowerCase()
     .replace(/[^a-zA-Z0-9\s]/g, "");
 

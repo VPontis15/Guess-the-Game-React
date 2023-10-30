@@ -16,6 +16,11 @@ function GamesCategory({ dispatch, children }) {
           );
           const data = await res.json();
 
+          if (!data)
+            throw new Error(
+              "There was a problem fetching the game. Please refresh"
+            );
+
           const gamesArray = data.results
             .map((game) => {
               return {
@@ -39,7 +44,7 @@ function GamesCategory({ dispatch, children }) {
 
           dispatch({ type: "Loaded", payload: false, status: "Loaded" });
         } catch (err) {
-          console.log(err);
+          console.log(err.message);
         }
       }
       fetchGames();

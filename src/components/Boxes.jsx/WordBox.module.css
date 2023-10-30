@@ -1,6 +1,6 @@
 .box {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   text-align: center;
   justify-content: center;
   align-items: center;

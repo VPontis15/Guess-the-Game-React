@@ -5,7 +5,13 @@ import {
   loopArrayToCheckCondintion,
 } from "../../utilityFunctions/utilityFunctions.js";
 
-function Input({ guess = "", dispatch, fetchedItem, correctGuesses }) {
+function Input({
+  guess = "",
+  dispatch,
+  fetchedItem,
+  wrongGuesses,
+  correctGuesses,
+}) {
   const formattedName = fetchedItem.name
     .replace(/[^a-zA-Z0-9]/g, "")
     .toLowerCase()
@@ -14,7 +20,7 @@ function Input({ guess = "", dispatch, fetchedItem, correctGuesses }) {
 
   useEffect(
     function () {
-      inputEl.current.focus();
+      inputEl?.current?.focus();
 
       function callback() {
         inputEl.current.value = "";
@@ -25,6 +31,8 @@ function Input({ guess = "", dispatch, fetchedItem, correctGuesses }) {
     },
     [formattedName, guess]
   );
+
+  console.log(wrongGuesses);
   return (
     <input
       placeholder="Type here"
