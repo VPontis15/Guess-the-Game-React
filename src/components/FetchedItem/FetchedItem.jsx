@@ -3,19 +3,36 @@ import WordBox from "../Boxes.jsx/WordBox";
 import LetterBox from "../Boxes.jsx/LetterBox";
 
 import { getRandomNumber } from "../../utilityFunctions/utilityFunctions.js";
+import { useEffect } from "react";
+import Timer from "../Timer/Timer";
 
-function FetchedItem({ fetchedItem, formattedName, correctGuesses }) {
-  if (!fetchedItem) return;
+function FetchedItem({
+  seconds,
+  minutes,
+  fetchedItem,
+  dispatch,
+  formattedName,
+  correctGuesses,
+}) {
   const formattedWords = fetchedItem.name
     .toLowerCase()
     .replace(/[^a-zA-Z0-9\s]/g, "");
-  const uniqueLetters = new Set(formattedName).size;
-  console.log(uniqueLetters.size, correctGuesses.length);
+
+  useEffect(
+    function () {
+      const uniqueLetters = new Set(formattedName).size;
+
+      if (correctGuesses.length === uniqueLetters) dispatch({ type: "Won" });
+    },
+    [correctGuesses.length, dispatch, formattedName]
+  );
 
   return (
-    <div className={styles.game}>
-      {correctGuesses.length !== uniqueLetters ? (
-        formattedWords.split(" ").map((word) => (
+    <>
+      <Timer dispatch={dispatch} minutes={minutes} seconds={seconds} />
+
+      <div className={styles.game}>
+        {formattedWords.split(" ").map((word) => (
           <WordBox key={getRandomNumber(400000000)}>
             {word.split("").map((letter) => (
               <LetterBox key={getRandomNumber(44444442432435)}>
@@ -31,13 +48,9 @@ function FetchedItem({ fetchedItem, formattedName, correctGuesses }) {
               </LetterBox>
             ))}
           </WordBox>
-        ))
-      ) : (
-        <>
-          <p className={styles.victory}>You Won</p>
-        </>
-      )}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

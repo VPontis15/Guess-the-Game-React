@@ -25,6 +25,9 @@ function GamesCategory({ dispatch, children }) {
                 genres: game.genres,
                 released_date: game.released,
                 id: game.id,
+                description: game.description,
+                platforms: game.platforms,
+                reddit: game.reddit,
               };
             })
             .filter((game) => game.score);
@@ -49,13 +52,3 @@ function GamesCategory({ dispatch, children }) {
 }
 
 export default GamesCategory;
-
-{
-  /* <div>
-{" "}
-<img className={styles.cover} src={`${fetchedItem.game_cover}`} />
-</div>
-<h3>{fetchedItem.name.replace(/[^a-zA-Z0-9]/g, " ")}</h3>
-<h3>Score: {fetchedItem.score}</h3>
-<h3>Released Date: {fetchedItem.released_date}</h3> */
-}

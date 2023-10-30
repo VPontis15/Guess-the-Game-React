@@ -1,0 +1,16 @@
+.cover {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.gameModal {
+  max-width: 600px;
+}

@@ -4,8 +4,8 @@ import GamesCategory from "./components/GamesCategory/GamesCategory";
 import Game from "./components/Game/Game";
 import Video from "./components/Resuable Components/Video";
 import Spinner from "./components/Spinner/Spinner";
+import Won from "./components/Won/Won";
 import { useReducer } from "react";
-import { act } from "react-dom/test-utils";
 
 const initialState = {
   hasStarted: false,
@@ -16,6 +16,10 @@ const initialState = {
   guess: "",
   correctGuesses: [],
   formattedName: "",
+  hasWon: false,
+  wrongGuesses: [],
+  seconds: 0,
+  minutes: 0,
 };
 
 function reducer(state, action) {
@@ -46,7 +50,14 @@ function reducer(state, action) {
             ? [...state.correctGuesses, action.payload]
             : [...state.correctGuesses],
       };
-
+    case "Won":
+      return { ...state, hasWon: true, status: "Won" };
+    case "tick":
+      return {
+        ...state,
+        seconds: state.seconds < 60 ? state.seconds + 1 : 0,
+        minutes: state.seconds === 60 ? state.minutes + 1 : state.minutes,
+      };
     default:
       throw new Error("wrong input");
   }
@@ -63,10 +74,14 @@ function App() {
       hasStarted,
       category,
       status,
+      hasWon,
+      wrongGuesses,
+      seconds,
+      minutes,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  console.log(correctGuesses);
+
   return (
     <div className="app">
       <Video />
@@ -77,18 +92,22 @@ function App() {
         <GamesCategory dispatch={dispatch}>
           {status === "Loaded" ? (
             <Game
+              hasWon={hasWon}
               fetchedItem={fetchedItem}
               formattedName={formattedName}
               guess={guess}
               dispatch={dispatch}
               isLoading={isLoading}
               correctGuesses={correctGuesses}
+              seconds={seconds}
+              minutes={minutes}
             />
           ) : (
-            <Spinner />
+            !hasWon && <Spinner />
           )}
         </GamesCategory>
       )}
+      {status === "Won" && <Won fetchedItem={fetchedItem} />}
     </div>
   );
 }

@@ -8,6 +8,8 @@
 
 .revealed {
   color: #36eee0;
+  opacity: 1;
+  transition: all 0.75s ease-in;
 }
 
 .victory {
@@ -18,4 +20,8 @@
 .cover {
   object-fit: cover;
   width: 300px;
+}
+
+.timer {
+  font-size: 7rem;
 }
