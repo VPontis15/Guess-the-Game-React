@@ -13,6 +13,7 @@ function StartScreen({ dispatch }) {
             dispatch({ type: "chooseCategory", payload: "chooseCategory" })
           }
           type={"btn-primary"}
+          animation={"btn-animation"}
         >
           Start the game
         </Button>

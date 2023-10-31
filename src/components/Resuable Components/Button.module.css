@@ -8,6 +8,13 @@
   color: #36eee0;
   outline: 1px solid #36eee0;
 }
+.btn-disabled {
+  background-color: transparent;
+  color: #36eee0;
+  outline: 1px solid #36eee0;
+  opacity: 0.2;
+  cursor: none;
+}
 
 .btn {
   border-radius: 5px;
@@ -16,4 +23,20 @@
   padding: 1.25em 3em;
   border: none;
   cursor: pointer;
+}
+
+.btn-animation {
+  animation: btnAnimation 1.25s ease-out;
+  backface-visibility: hidden;
+}
+
+@keyframes btnAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

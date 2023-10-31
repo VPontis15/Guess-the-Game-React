@@ -2,7 +2,7 @@ import styles from "./Won.module.css";
 import Button from "../Resuable Components/Button";
 
 function Won({ fetchedItem, seconds, minutes, dispatch }) {
-  const { name, id, genres, released_date, description, game_cover, score } =
+  const { name, genres, released_date, description, game_cover, score } =
     fetchedItem;
 
   return (

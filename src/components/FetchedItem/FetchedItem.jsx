@@ -3,12 +3,9 @@ import WordBox from "../Boxes.jsx/WordBox";
 import LetterBox from "../Boxes.jsx/LetterBox";
 
 import { getRandomNumber } from "../../utilityFunctions/utilityFunctions.js";
-import { useEffect } from "react";
-import Timer from "../Timer/Timer";
+import { memo, useEffect } from "react";
 
-function FetchedItem({
-  seconds,
-  minutes,
+const FetchedItem = memo(function FetchedItem({
   fetchedItem,
   dispatch,
   formattedName,
@@ -29,13 +26,11 @@ function FetchedItem({
 
   return (
     <>
-      <Timer dispatch={dispatch} minutes={minutes} seconds={seconds} />
-
       <div className={styles.game}>
-        {formattedWords.split(" ").map((word) => (
-          <WordBox key={getRandomNumber(400000000)}>
-            {word.split("").map((letter) => (
-              <LetterBox key={getRandomNumber(44444442432435)}>
+        {formattedWords.split(" ").map((word, i) => (
+          <WordBox key={i}>
+            {word.split("").map((letter, i) => (
+              <LetterBox key={i}>
                 <p
                   className={
                     correctGuesses.includes(letter)
@@ -52,6 +47,6 @@ function FetchedItem({
       </div>
     </>
   );
-}
+});
 
 export default FetchedItem;

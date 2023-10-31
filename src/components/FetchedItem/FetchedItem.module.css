@@ -10,6 +10,7 @@
   color: #36eee0;
   opacity: 1;
   transition: all 0.75s ease-in;
+  animation: revealAnimation 0.5s;
 }
 
 .victory {
@@ -24,4 +25,14 @@
 
 .timer {
   font-size: 7rem;
+}
+
+@keyframes revealAnimation {
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #36eee0;
+  }
 }

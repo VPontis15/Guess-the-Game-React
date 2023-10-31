@@ -6,6 +6,8 @@ import Video from "./components/Resuable Components/Video";
 import Spinner from "./components/Spinner/Spinner";
 import Won from "./components/Won/Won";
 import { useReducer } from "react";
+import Input from "./components/Input/Input";
+import MoviesCategory from "./components/MoviesCategory/MoviesCategory";
 
 const initialState = {
   hasStarted: false,
@@ -94,22 +96,24 @@ function App() {
       <Video />
       {!hasStarted && <StartScreen dispatch={dispatch} />}
       {status === "chooseCategory" && <Categories dispatch={dispatch} />}
-      {status === "startGame" && category === "movies" && <p>Movies</p>}
+      {category === "movies" && <MoviesCategory dispatch={dispatch} />}
       {category === "games" && (
         <GamesCategory dispatch={dispatch}>
           {status === "Loaded" ? (
-            <Game
-              hasWon={hasWon}
-              fetchedItem={fetchedItem}
-              formattedName={formattedName}
-              guess={guess}
-              dispatch={dispatch}
-              isLoading={isLoading}
-              correctGuesses={correctGuesses}
-              seconds={seconds}
-              minutes={minutes}
-              wrongGuesses={wrongGuesses}
-            />
+            <>
+              <Game
+                hasWon={hasWon}
+                fetchedItem={fetchedItem}
+                formattedName={formattedName}
+                guess={guess}
+                dispatch={dispatch}
+                isLoading={isLoading}
+                correctGuesses={correctGuesses}
+                seconds={seconds}
+                minutes={minutes}
+                wrongGuesses={wrongGuesses}
+              />
+            </>
           ) : (
             !hasWon && <Spinner />
           )}

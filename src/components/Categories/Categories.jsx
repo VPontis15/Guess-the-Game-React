@@ -10,18 +10,20 @@ function Categories({ dispatch }) {
       </h1>
       <div className="row">
         <Button
+          disabled={true}
           functionality={() =>
             dispatch({ type: "startGame", payload: "movies" })
           }
-          type={"btn-primary"}
+          type={"btn-disabled"}
         >
           Movies
         </Button>
         <Button
+          disabled={false}
           functionality={() =>
             dispatch({ type: "startGame", payload: "games" })
           }
-          type={"btn-secondary"}
+          type={"btn-primary"}
         >
           Games
         </Button>

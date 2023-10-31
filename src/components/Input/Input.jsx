@@ -1,18 +1,8 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import styles from "./Input.module.css";
-import {
-  CheckForLetter,
-  loopArrayToCheckCondintion,
-} from "../../utilityFunctions/utilityFunctions.js";
 
-function Input({
-  guess = "",
-  dispatch,
-  fetchedItem,
-  wrongGuesses,
-  correctGuesses,
-}) {
-  const formattedName = fetchedItem.name
+const Input = memo(function Input({ guess = "", dispatch, fetchedItem }) {
+  const formattedName = fetchedItem?.name
     .replace(/[^a-zA-Z0-9]/g, "")
     .toLowerCase()
     .split("");
@@ -32,7 +22,6 @@ function Input({
     [formattedName, guess]
   );
 
-  console.log(wrongGuesses);
   return (
     <input
       placeholder="Type here"
@@ -49,6 +38,6 @@ function Input({
       }
     />
   );
-}
+});
 
 export default Input;

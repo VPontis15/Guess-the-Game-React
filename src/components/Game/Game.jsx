@@ -1,6 +1,8 @@
 import styles from "./Game.module.css";
 import FetchedItem from "../FetchedItem/FetchedItem";
 import Input from "../Input/Input";
+import Timer from "../Timer/Timer";
+
 import Won from "../Won/Won";
 
 function Game({
@@ -16,22 +18,16 @@ function Game({
 }) {
   return (
     <section className={styles.game}>
+      <Timer dispatch={dispatch} minutes={minutes} seconds={seconds} />
+
       <FetchedItem
-        guess={guess}
         dispatch={dispatch}
         fetchedItem={fetchedItem}
         correctGuesses={correctGuesses}
         formattedName={formattedName}
-        seconds={seconds}
-        minutes={minutes}
         wrongGuesses={wrongGuesses}
       />
-      <Input
-        wrongGuesses={wrongGuesses}
-        dispatch={dispatch}
-        fetchedItem={fetchedItem}
-        guess={guess}
-      />
+      <Input dispatch={dispatch} fetchedItem={fetchedItem} guess={guess} />
     </section>
   );
 }
