@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import Button from "../Resuable Components/Button";
+import React from "react";
 
 const AnimateTitle = keyframes`
   0% {

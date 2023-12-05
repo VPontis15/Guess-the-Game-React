@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-
+import React from "react";
 // Keyframes for button animation
 const btnAnimation = keyframes`
   0% {

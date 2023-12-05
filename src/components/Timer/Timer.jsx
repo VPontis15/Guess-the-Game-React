@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 import { useEffect } from "react";
 
 const StyledTimer = styled.h2`

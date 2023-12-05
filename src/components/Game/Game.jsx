@@ -1,3 +1,4 @@
+import React from "react";
 import FetchedItem from "../FetchedItem/FetchedItem";
 import Input from "../Input/Input";
 import Timer from "../Timer/Timer";

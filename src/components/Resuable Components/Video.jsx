@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 import bg_video from "./bg_video.mp4";
 

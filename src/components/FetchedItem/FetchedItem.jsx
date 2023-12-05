@@ -1,3 +1,4 @@
+import React from "react";
 import WordBox from "../Boxes.jsx/WordBox";
 import LetterBox from "../Boxes.jsx/LetterBox";
 import Spinner from "../Spinner/Spinner";

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getRandomNumber } from "../../utilityFunctions/utilityFunctions";
-
+import React from "react";
 function GamesCategory({ dispatch, children }) {
   useEffect(
     function () {

@@ -1,5 +1,5 @@
+import React from "react";
 import { memo, useEffect, useRef } from "react";
-
 import styled from "styled-components";
 
 const StyledInput = styled.input`

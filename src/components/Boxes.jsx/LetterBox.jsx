@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 const Letter = styled.span`
   border: 2px solid #36eee0;

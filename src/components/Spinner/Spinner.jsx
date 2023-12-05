@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-
+import React from "react";
 const animateRotate = keyframes`
   to {
     transform: rotate(1turn);
