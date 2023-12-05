@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { getRandomNumber } from "../../utilityFunctions/utilityFunctions";
 import React from "react";
+const KEY = "829b60ddf5b8476987877051d2942836";
+
 function GamesCategory({ dispatch, children }) {
   useEffect(
     function () {
-      const KEY = "829b60ddf5b8476987877051d2942836";
       const controller = new AbortController();
       async function fetchGames() {
         try {
@@ -21,7 +22,7 @@ function GamesCategory({ dispatch, children }) {
               "There was a problem fetching the game. Please refresh"
             );
 
-          const gamesArray = data.results
+          const gamesArray = data?.results
             .map((game) => {
               return {
                 name: game.name,
@@ -35,11 +36,11 @@ function GamesCategory({ dispatch, children }) {
                 reddit: game.reddit,
               };
             })
-            .filter((game) => game.score);
+            .filter((game) => game?.score);
 
           dispatch({
             type: "fetchGame",
-            payload: gamesArray[getRandomNumber(data.results.length - 1)],
+            payload: gamesArray[getRandomNumber(data?.results?.length - 1)],
           });
 
           dispatch({ type: "Loaded", payload: false, status: "Loaded" });
