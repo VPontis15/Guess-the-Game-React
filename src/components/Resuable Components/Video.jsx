@@ -11,6 +11,7 @@ const StyledVideo = styled.video`
   z-index: -100;
   object-fit: cover;
   background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 export default function Video() {
   return (
