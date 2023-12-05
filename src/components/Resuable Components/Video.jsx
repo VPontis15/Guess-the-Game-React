@@ -15,7 +15,7 @@ const StyledVideo = styled.video`
 `;
 export default function Video() {
   return (
-    <div className="overlay">
+    <div>
       <StyledVideo autoPlay loop muted>
         <source src={bg_video} type="video/mp4" />
         <source src={bg_video} type="video/ogg" />
