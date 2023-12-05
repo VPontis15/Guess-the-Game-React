@@ -1,5 +1,9 @@
+import { useImage } from "react-image";
 import Button from "../Resuable Components/Button";
+import Spinner from "../Spinner/Spinner";
 import styled from "styled-components";
+import { Suspense } from "react";
+import React from "react";
 
 const GameCover = styled.img`
   width: 100%;
@@ -59,10 +63,15 @@ const Value = styled.span`
 function Won({ fetchedItem, seconds, minutes, dispatch }) {
   const { name, genres, released_date, description, game_cover, score } =
     fetchedItem;
-
+  const { src, isLoading } = useImage({
+    srcList: game_cover,
+    useSuspense: false,
+  });
+  console.log(isLoading);
+  if (isLoading) return <Spinner />;
   return (
     <GameModal>
-      <GameCover src={game_cover} alt={`image of the game ${name}`} />
+      <GameCover src={src} />
       <GameTitle>{name}</GameTitle>
       <Row>
         <h2>
