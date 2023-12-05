@@ -1,13 +1,14 @@
-import StartScreen from "./components/StartScreen/StartScreen";
-import Categories from "./components/Categories/Categories";
-import GamesCategory from "./components/GamesCategory/GamesCategory";
-import Game from "./components/Game/Game";
+import StartScreen from "./components/StartScreen/StartScreen.jsx";
+import Categories from "./components/Categories/Categories.jsx";
+import GamesCategory from "./components/GamesCategory/GamesCategory.jsx";
+import Game from "./components/Game/Game.jsx";
 import Video from "./components/Resuable Components/Video";
-import Spinner from "./components/Spinner/Spinner";
-import Won from "./components/Won/WonScreen";
+import Spinner from "./components/Spinner/Spinner.jsx";
+import Won from "./components/Won/WonScreen.jsx";
 import { useReducer } from "react";
 
-import MoviesCategory from "./components/MoviesCategory/MoviesCategory";
+import MoviesCategory from "./components/MoviesCategory/MoviesCategory.jsx";
+import React from "react";
 
 const initialState = {
   hasStarted: false,
@@ -104,7 +105,9 @@ function App() {
       <Video />
       {!hasStarted && <StartScreen dispatch={dispatch} />}
       {status === "chooseCategory" && <Categories dispatch={dispatch} />}
-      {category === "movies" && <MoviesCategory dispatch={dispatch} />}
+      {category === "movies" && (
+        <MoviesCategory dispatch={dispatch} children={undefined} />
+      )}
       {category === "games" && (
         <GamesCategory dispatch={dispatch}>
           {status === "Loaded" ? (
