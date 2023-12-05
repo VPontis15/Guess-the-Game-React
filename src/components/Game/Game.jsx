@@ -1,14 +1,22 @@
-import styles from "./Game.module.css";
 import FetchedItem from "../FetchedItem/FetchedItem";
 import Input from "../Input/Input";
 import Timer from "../Timer/Timer";
+import styled from "styled-components";
 
-import Won from "../Won/Won";
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 8rem;
+  align-items: center;
+  width: 100%;
+`;
 
 function Game({
   formattedName,
   fetchedItem,
-  hasWon,
+
   dispatch,
   guess,
   correctGuesses,
@@ -17,7 +25,7 @@ function Game({
   wrongGuesses,
 }) {
   return (
-    <section className={styles.game}>
+    <StyledSection>
       <Timer dispatch={dispatch} minutes={minutes} seconds={seconds} />
 
       <FetchedItem
@@ -28,7 +36,7 @@ function Game({
         wrongGuesses={wrongGuesses}
       />
       <Input dispatch={dispatch} fetchedItem={fetchedItem} guess={guess} />
-    </section>
+    </StyledSection>
   );
 }
 

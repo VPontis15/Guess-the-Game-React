@@ -4,9 +4,9 @@ import GamesCategory from "./components/GamesCategory/GamesCategory";
 import Game from "./components/Game/Game";
 import Video from "./components/Resuable Components/Video";
 import Spinner from "./components/Spinner/Spinner";
-import Won from "./components/Won/Won";
+import Won from "./components/Won/WonScreen";
 import { useReducer } from "react";
-import Input from "./components/Input/Input";
+
 import MoviesCategory from "./components/MoviesCategory/MoviesCategory";
 
 const initialState = {
@@ -22,6 +22,7 @@ const initialState = {
   wrongGuesses: [],
   seconds: 0,
   minutes: 0,
+  error: "",
 };
 
 function reducer(state, action) {
@@ -59,6 +60,12 @@ function reducer(state, action) {
       };
     case "Won":
       return { ...state, hasWon: true, status: "Won" };
+    case "Error":
+      return {
+        ...state,
+        error: action.payload || "There was an error",
+        status: state.error,
+      };
     case "tick":
       return {
         ...state,
@@ -87,6 +94,7 @@ function App() {
       wrongGuesses,
       seconds,
       minutes,
+      error,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -127,6 +135,7 @@ function App() {
           fetchedItem={fetchedItem}
         />
       )}
+      {status === "error" && <p>{error}</p>}
     </div>
   );
 }

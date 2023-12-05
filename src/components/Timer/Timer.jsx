@@ -1,5 +1,9 @@
-import styles from "./Timer.module.css";
+import styled from "styled-components";
 import { useEffect } from "react";
+
+const StyledTimer = styled.h2`
+  font-size: 6.5rem;
+`;
 
 function Timer({ minutes, seconds, dispatch }) {
   useEffect(
@@ -12,9 +16,9 @@ function Timer({ minutes, seconds, dispatch }) {
     [dispatch]
   );
   return (
-    <h2 className={styles.timer}>{`${minutes < 10 ? "0" : ""}${minutes}:${
+    <StyledTimer>{`${minutes < 10 ? "0" : ""}${minutes}:${
       seconds < 10 ? "0" : ""
-    }${seconds}`}</h2>
+    }${seconds}`}</StyledTimer>
   );
 }
 

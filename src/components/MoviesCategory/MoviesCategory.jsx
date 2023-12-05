@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import styles from "./MoviesCategory.module.css";
 
 function MoviesCategory({ children, dispatch }) {
   useEffect(function () {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getRandomNumber } from "../../utilityFunctions/utilityFunctions";
 
 function GamesCategory({ dispatch, children }) {
@@ -44,7 +44,7 @@ function GamesCategory({ dispatch, children }) {
 
           dispatch({ type: "Loaded", payload: false, status: "Loaded" });
         } catch (err) {
-          console.log(err.message);
+          dispatch({ type: "Error", payload: err.message });
         }
       }
       fetchGames();
